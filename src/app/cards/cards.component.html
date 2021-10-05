@@ -1,0 +1,130 @@
+<style>
+  .card {
+  all: unset;
+  border-radius: 4px;
+  border: 2px solid #00000027;
+  background-color: white;
+  height: 150px;
+  width: 220px;
+  margin: 100px 70px 16px;
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+  border-top: 5px solid #02ca98;
+  justify-content: center;
+  display: inline-block;
+  
+}
+
+.card:hover {
+  border: 2px solid red;
+  border-top: 5px solid red;
+  cursor: pointer;
+}
+
+#cardSelect {
+  border: 2px solid #02ca98;
+}
+
+#publishedChange{
+  transform: rotate(-40deg);
+  color: #02ca98;
+  background-color:#fff;
+  border:1px solid #02ca98;    
+  height:40px;
+  width:40px;
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+}
+
+#publishedChange:hover{
+  color: #fff;
+  background-color: #02ca98;
+}
+
+#expiredChange {
+  color: gray;
+  background-color:#fff;
+  border:1px solid gray;    
+  height:40px;
+  width:40px;
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+}
+
+.btn-default {
+  all: unset;
+  border-radius: 4px;
+  border: 2px solid #00000027;
+  background-color: white;
+  height: 150px;
+  width: 220px;
+  margin: 100px 70px 16px;
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+  border-top: 5px solid #02ca98;
+  justify-content: center;
+  display: inline-block;
+}
+
+.btn-change {
+  all: unset;
+  border-radius: 4px;
+  border: 2px solid red;
+  background-color: white;
+  height: 150px;
+  width: 220px;
+  margin: 100px 70px 16px;
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+  border-top: 5px solid red;
+  justify-content: center;
+  display: inline-block;
+} 
+
+</style>
+
+<mat-card class="card" [ngClass]="onSelect()" (click)="selectedCard()" [ngClass]="[cardStyle]" (click)="onChange()">
+    <div class="cardIcon">
+        <span class="material-icons" *ngIf="data.SURVEY_STATUS_EN==='Published'" id="publishedChange">send</span>
+        <span class="material-icons" *ngIf="data.SURVEY_STATUS_EN==='Expired'" id="expiredChange">hourglass_bottom</span>
+        <span class="material-icons" *ngIf="data.SURVEY_STATUS_EN==='Closed'" id="closedChange">lock</span>
+      </div>
+
+      <div class="cardName mt-2">{{data.TemplateName}}</div>
+      <hr style="margin-top: 30px;">
+      <div class="surPeriod" *ngIf="data.SurveyPeriods.length===1">
+        <span style="color: gray;"> {{data.SurveyPeriods[0].START_DATE | date:'dd/MM/yyyy'}} - {{data.SurveyPeriods[0].END_DATE | date:'dd/MM/yyyy'}} </span>
+      </div>
+
+      <div class="surPeriod" *ngIf="data.SurveyPeriods.length!==1">
+        <span >             
+          <mat-form-field  appearance="fill" >
+            <mat-label>Choose an option</mat-label>
+            <mat-select  >
+              <mat-option *ngFor="let date of data.SurveyPeriods">
+                {{date.START_DATE | date:'dd/MM/yyyy'}} - {{date.END_DATE | date:'dd/MM/yyyy'}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+        </span>
+      </div>
+</mat-card>
+
