@@ -1,0 +1,26 @@
+<div class="login-page">
+    <div class="form">
+      <form class="login-form" [formGroup]="formGroup">
+        <input type="password" placeholder="Password" class="form-control" formControlName="password" minlength="8"/>
+        <span class="help-block" *ngIf="!formGroup.get('password')?.valid &&(formGroup.get('password')?.touched || confirm_clicked)">
+            <ul>
+                <li *ngIf="formGroup.get('password')?.hasError('required')"><p>Password is required</p></li>
+                <li *ngIf="formGroup.get('password')?.hasError('minlength')"><p>8 characters Password minimum</p></li>
+                <li *ngIf="formGroup.get('password')?.hasError('isUpper')"><p>1 uppercase letter at least is required</p></li>
+                <li *ngIf="formGroup.get('password')?.hasError('isLower')"><p>1 lowercase letter at least is required</p></li>
+                <li *ngIf="formGroup.get('password')?.hasError('Number')"><p>1 integer number at least is required</p></li>
+                <li *ngIf="formGroup.get('password')?.hasError('symbol')"><p>1 symbol at least is required</p></li>
+            </ul>
+        </span>
+        <input type="password" placeholder="Confirm Password" class="form-control" formControlName="confirmPassword"/>
+        <span class="help-block" *ngIf="!formGroup.get('confirmPassword')?.valid &&(formGroup.get('confirmPassword')?.touched || confirm_clicked)">
+            <ul>
+                <li *ngIf="formGroup.get('confirmPassword')?.hasError('required')"><p>Confirm Password is required</p></li>
+                <li *ngIf="formGroup.get('confirmPassword')?.hasError('mustMatch')"><p>Passwords Don't Match!</p></li>
+            </ul>
+
+        </span>
+        <button [disabled]="!formGroup.valid" (click)="submit()" (click)="homePage()">Check Password</button>
+      </form>
+    </div>
+  </div>
