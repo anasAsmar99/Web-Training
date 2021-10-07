@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "JavaScript",
+    "body": "BackEnd using nodeJS"
+  },
+  {
+    "id": 2,
+    "title": "Angular",
+    "body": "Khawarizmi using angular"
+  },
+  {
+    "id": 3,
+    "title": "HTML",
+    "body": "HTML and CSS"
+  },
+  {
+    "id": 4,
+    "title": "Testing",
+    "body": "Automative Testing"
+  },
+  {
+    "id": 5,
+    "title": "Python",
+    "body": "Django Framework"
+  },
+  {
+    "id": 6,
+    "title": "Nodemon",
+    "body": "Auto Refresh"
+  },
+  {
+    "id": 7,
+    "title": "update book",
+    "body": "put method"
+  },
+  {
+    "id": 8,
+    "title": "update",
+    "body": "put methobgbgbgd"
+  }
+]
